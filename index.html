@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mundial Del Valle · Nos une</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================================
+                    VARIABLES
+                   ============================================================ */
+        :root {
+            --verde-cancha: #1a7a3a;
+            --verde-claro: #2ecc71;
+            --amarillo-dorado: #f1c40f;
+            --azul-profundo: #4e99fb;
+            --azul-profundo2: #0a2f5e;
+            --blanco: #ffffff;
+            --negro-suave: #1e1e1e;
+            --gris-texto: #e0e0e0;
+            --sombra: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --border-radius: 18px;
+            --bg-body: #0a0f1a;
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --nav-bg: rgba(10, 15, 30, 0.98);
+            --whatsapp: #25d366;
+            --header-gradient: linear-gradient(135deg, #0a1a2e 0%, #0f3a1e 100%);
+        }
+
+       
+
+        /* ============================================================
+                    RESET Y BASE
+                   ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            padding-bottom: 80px;
+            background-image: radial-gradient(circle at 10% 20%, rgba(46, 204, 113, 0.08) 0%, transparent 60%),
+                              radial-gradient(circle at 90% 80%, rgba(241, 196, 15, 0.06) 0%, transparent 50%);
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* ============================================================
+                    HEADER
+                   ============================================================ */
+        .app-header {
+            background: var(--header-gradient);
+            color: var(--blanco);
+            padding: 28px 20px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--amarillo-dorado);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .app-header::before {
+            content: "⚽";
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.06;
+            right: -20px;
+            top: -30px;
+            transform: rotate(20deg);
+        }
+
+        .app-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .app-header h1 i {
+            color: var(--amarillo-dorado);
+            margin-right: 6px;
+        }
+
+        .app-header .eslogan-principal {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--amarillo-dorado);
+            letter-spacing: 3px;
+            text-shadow: 0 2px 10px rgba(241, 196, 15, 0.3);
+            margin-top: 2px;
+        }
+
+        .app-header .subtitulo {
+            font-size: 14px;
+            font-weight: 400;
+            color: #a8d5b5;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ============================================================
+                    WHATSAPP FLOTANTE
+                   ============================================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 18px;
+            background: var(--whatsapp);
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.2s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        /* ============================================================
+                    CONTENEDOR
+                   ============================================================ */
+        .app-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        .app-view {
+            display: none;
+            animation: fadeUp 0.4s ease-out;
+        }
+
+        .app-view.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================================
+                    TARJETAS
+                   ============================================================ */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(4px);
+            border-radius: var(--border-radius);
+            padding: 22px 18px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: var(--sombra);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--azul-profundo);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        [data-theme="dark"] .card-title {
+            color: var(--amarillo-dorado);
+        }
+
+        .card-title i {
+            color: var(--amarillo-dorado);
+        }
+
+        /* ============================================================
+                    BANNER EVENTO
+                   ============================================================ */
+        .banner-evento {
+            background: linear-gradient(135deg, rgba(10, 47, 94, 0.92) 0%, rgba(26, 122, 58, 0.85) 100%);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 24px 20px;
+            border: 2px solid var(--amarillo-dorado);
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-evento .fecha-destacada {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--amarillo-dorado);
+            letter-spacing: 1px;
+        }
+
+        .banner-evento .lugar {
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .banner-evento .lugar i {
+            color: var(--amarillo-dorado);
+        }
+
+        .banner-evento .detalle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+                    CARRUSEL
+                   ============================================================ */
+        .carrusel {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 16rem;
+            gap: 2rem;
+            width: max-content;
+            animation: animate 60s linear infinite;
+        }
+
+        @keyframes animate {
+            to {
+                transform: translatex(calc(-8 * (16rem - 1rem)));
+            }
+        }
+
+        .caja-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 2px solid #cfbb00;
+            overflow: hidden;
+            border-radius: 5%;
+        }
+
+        .image-banner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 12px 0 4px;
+        }
+
+        .image-banner img {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            border-radius: 14px;
+            border: 2px solid var(--amarillo-dorado);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+            object-fit: cover;
+        }
+
+        .image-banner img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ============================================================
+                    EQUIPOS
+                   ============================================================ */
+        .equipos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .equipo-card {
+            background: var(--bg-body);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .equipo-card:hover {
+            border-color: var(--amarillo-dorado);
+            box-shadow: 0 4px 16px rgba(241, 196, 15, 0.15);
+        }
+
+        .equipo-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            border: 2px solid var(--amarillo-dorado);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 30%, #2ecc71, #1a7a3a);
+        }
+
+        [data-theme="dark"] .equipo-logo {
+            background: radial-gradient(circle at 30% 30%, #1a7a3a, #0a2f5e);
+        }
+
+        .equipo-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .equipo-nombre {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .equipo-grupo {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+                    TABLA POSICIONES
+                   ============================================================ */
+        .tabla-posiciones {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .tabla-posiciones th {
+            background: var(--azul-profundo2);
+            color: white;
+            padding: 8px 4px;
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .tabla-posiciones td {
+            padding: 8px 4px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .tabla-posiciones .grupo-header {
+            background: var(--amarillo-dorado);
+            color: var(--azul-profundo);
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            text-align: left;
+            padding-left: 12px;
+        }
+
+        .tabla-posiciones .pos-1 { border-left: 5px solid var(--amarillo-dorado); }
+        .tabla-posiciones .pos-2 { border-left: 5px solid #94a3b8; }
+        .tabla-posiciones .pos-3 { border-left: 5px solid #cd7f32; }
+
+        .tabla-posiciones .equipo-nom {
+            text-align: left;
+            font-weight: 600;
+            padding-left: 10px;
+        }
+
+        /* ============================================================
+                    FECHAS - DISEÑO EN FILA MEJORADO
+                   ============================================================ */
+        .fecha-card {
+            background: var(--bg-body);
+            border-radius: 14px;
+            padding: 20px 16px;
+            margin-bottom: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.2s;
+        }
+
+        .fecha-card:hover {
+            border-color: var(--amarillo-dorado);
+        }
+
+        .fecha-contenido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Contenedor de los equipos en fila */
+        .fecha-equipos-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        /* Cada equipo */
+        .fecha-equipo-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 80px;
+        }
+
+        .fecha-equipo-col .logo-small {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            border: 3px solid var(--amarillo-dorado);
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 30%, #2ecc71, #1a7a3a);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .fecha-equipo-col .logo-small {
+            background: radial-gradient(circle at 30% 30%, #1a7a3a, #0a2f5e);
+        }
+
+        .fecha-equipo-col .logo-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fecha-equipo-col .nombre-equipo {
+            font-weight: 600;
+            font-size: 13px;
+            text-align: center;
+            color: var(--text-primary);
+            max-width: 100px;
+            line-height: 1.2;
+        }
+
+        /* VS */
+        .fecha-vs {
+            font-weight: 700;
+            color: var(--amarillo-dorado);
+            font-size: 18px;
+            padding: 0 8px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Marcador debajo de los nombres */
+        .fecha-marcador-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 6px 18px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            min-width: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .fecha-marcador-row .gol-local,
+        .fecha-marcador-row .gol-visitante {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .fecha-marcador-row .separador {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .fecha-marcador-row .sin-resultado {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.6;
+        }
+
+        /* Badge de estado */
+        .fecha-estado {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .fecha-estado.finalizado {
+            background: var(--verde-cancha);
+            color: white;
+        }
+
+        .fecha-estado.pendiente {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Información del partido */
+        .fecha-info-partido {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 10px;
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        .fecha-info-partido strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .fecha-info-partido i {
+            color: var(--amarillo-dorado);
+            margin-right: 4px;
+        }
+
+        .fecha-info-partido .lugar-text {
+            display: inline-block;
+            margin-left: 12px;
+        }
+
+        /* ============================================================
+                    TABLA GOLEADORES
+                   ============================================================ */
+        .goleadores-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .goleadores-table th {
+            background: var(--azul-profundo2);
+            color: white;
+            padding: 8px 6px;
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .goleadores-table td {
+            padding: 8px 6px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .goleadores-table .top-scorer {
+            border-left: 5px solid var(--amarillo-dorado);
+            background: rgba(241, 196, 15, 0.08);
+        }
+
+        .goleadores-table .goleador-pos {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* ============================================================
+                    MODAL
+                   ============================================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 28px 22px;
+            width: 100%;
+            max-width: 440px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid var(--amarillo-dorado);
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { transform: scale(0.9) translateY(30px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .modal-header-info {
+            text-align: center;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--amarillo-dorado);
+            padding-bottom: 14px;
+        }
+
+        .player-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .player-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .player-item.captain {
+            font-weight: 700;
+            color: var(--amarillo-dorado);
+        }
+
+        /* ============================================================
+                    PREMIOS
+                   ============================================================ */
+        .premios-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .premio-item {
+            background: var(--bg-body);
+            border-radius: 14px;
+            padding: 16px 12px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.2s;
+        }
+
+        .premio-item:hover {
+            border-color: var(--amarillo-dorado);
+        }
+
+        .premio-item .premio-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .premio-item .premio-monto {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--amarillo-dorado);
+        }
+
+        .premio-item .premio-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .premio-item.destacado {
+            border-color: var(--amarillo-dorado);
+            background: rgba(241, 196, 15, 0.08);
+        }
+
+        /* ============================================================
+                    PERFIL LÍDER
+                   ============================================================ */
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            overflow: hidden;
+            border: 4px solid var(--amarillo-dorado);
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.2);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        .eslogan-perfil {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--amarillo-dorado);
+            letter-spacing: 2px;
+            margin: 8px 0;
+        }
+
+        .biography {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            text-align: justify;
+            margin: 16px 0;
+        }
+
+        /* ============================================================
+                    ACORDEÓN
+                   ============================================================ */
+        .accordion-item {
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 14px 16px;
+            background: var(--bg-body);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .accordion-header i {
+            color: var(--amarillo-dorado);
+            transition: transform 0.2s;
+        }
+
+        .accordion-body {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            background: var(--bg-card);
+            display: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ============================================================
+                    BOTÓN
+                   ============================================================ */
+        .btn {
+            padding: 14px;
+            background: var(--azul-profundo);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #0f3f7a;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn i {
+            color: var(--amarillo-dorado);
+        }
+
+        .btn-success {
+            background: var(--verde-cancha);
+        }
+
+        .btn-success:hover {
+            background: #0f5e2e;
+        }
+
+        /* ============================================================
+                    NAVEGACIÓN INFERIOR
+                   ============================================================ */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            border-top: 2px solid var(--amarillo-dorado);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+            padding: 0 2px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 10px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 14.28%;
+            height: 100%;
+            gap: 2px;
+            padding: 4px 0;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        .nav-item.active {
+            color: var(--amarillo-dorado);
+        }
+
+        .nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .nav-item span {
+            line-height: 1.2;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================================
+                    RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 480px) {
+            .app-header h1 { font-size: 26px; }
+            .app-header .eslogan-principal { font-size: 22px; }
+            .banner-evento .fecha-destacada { font-size: 24px; }
+            .image-banner img { max-width: 140px; }
+            .equipos-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-item { font-size: 9px; }
+            .nav-item i { font-size: 18px; }
+            .premios-grid { grid-template-columns: 1fr 1fr; }
+            
+            .fecha-equipos-row {
+                gap: 10px;
+            }
+            .fecha-equipo-col .logo-small {
+                width: 50px;
+                height: 50px;
+            }
+            .fecha-equipo-col .nombre-equipo {
+                font-size: 11px;
+                max-width: 70px;
+            }
+            .fecha-vs {
+                font-size: 14px;
+                padding: 0 4px;
+            }
+            .fecha-marcador-row .gol-local,
+            .fecha-marcador-row .gol-visitante {
+                font-size: 18px;
+                min-width: 20px;
+            }
+            .fecha-info-partido {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="app-header">
+        <h1><i class="fa-solid fa-trophy"></i> El Mundial Del Valle</h1>
+        <div class="eslogan-principal">🤝 Nos une</div>
+        <div class="subtitulo">🏆 Uniendo barrios · Transformando vidas</div>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">
+            <i class="fa-solid fa-moon"></i> <span style="font-size:12px;">Tema</span>
+        </button>
+    </header>
+
+    <!-- ============================================================
+    WHATSAPP FLOTANTE
+    ============================================================ -->
+    <a href="https://wa.me/573232915542?text=Hola,%20quiero%20más%20información%20sobre%20el%20Mundial%20Del%20Valle" 
+       class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
+    <div class="app-container">
+
+        <!-- ==========================================================
+        VISTA INICIO
+        ========================================================== -->
+        <div id="view-inicio" class="app-view active">
+            <div class="banner-evento">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                    <div>
+                        <div style="font-size:14px; opacity:0.8; text-transform:uppercase; letter-spacing:1px;">📢 Proximo evento</div>
+                        <div class="fecha-destacada">VIERNES 17 DE JULIO</div>
+                        <div class="lugar"><i class="fa-solid fa-location-dot"></i> Cancha La Gota Fria · 7:00 PM</div>
+                    </div>
+                    <div style="font-size:44px; opacity:0.3;">⚽</div>
+                </div>
+                <div class="detalle">
+                    <span><i class="fa-solid fa-users"></i> EQUIPO LOS COCOS VS CIUDADELA FC</span>
+                    <span><i class="fa-solid fa-users"></i> EQUIPO LAS TORRES VS ELITE FC</span>                    
+                    <span><i class="fa-solid fa-flag"></i> Estar 30 mit para la foto del equipo </span>
+                </div>
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--verde-claro);">
+                    <img style="max-width: 100%; height: auto; display: block;" src="img/partido1.webp" alt="Premios">
+                </div>
+            </div>
+            <br>
+
+            <!-- GALERÍA -->
+            <div class="card">
+                <section id="galeria">
+                    <div class="carrusel">
+                        <div class="card-title"><i class="fa-solid fa-images"></i> Galería</div>
+                        <div class="wrapper">
+                            <div class="caja-imagen"><img src="img/p1.webp" alt="Imagen 1"></div>
+                            <div class="caja-imagen"><img src="img/p2.webp" alt="Imagen 2"></div>
+                            <div class="caja-imagen"><img src="img/p3.webp" alt="Imagen 3"></div>
+                            <div class="caja-imagen"><img src="img/p4.webp" alt="Imagen 4"></div>
+                            <div class="caja-imagen"><img src="img/p5.webp" alt="Imagen 5"></div>
+                            <div class="caja-imagen"><img src="img/p6.webp" alt="Imagen 6"></div>
+                            <div class="caja-imagen"><img src="img/p10.webp" alt="Imagen 7"></div>
+                            <div class="caja-imagen"><img src="img/p8.webp" alt="Imagen 8"></div>
+                                    
+                            <div class="caja-imagen"><img src="img/p1.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p2.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p3.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p4.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p5.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p6.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p10.webp" area-hidden="true"></div>
+                            <div class="caja-imagen"><img src="img/p8.webp" area-hidden="true"></div>                                                        
+                        </div>
+                    </div>
+                    <div class="image-banner">
+                        <img src="img/p12.webp" alt="Jorge Pana Diputado">
+                        <img src="img/p7.webp" alt="Nos une">
+                        <img src="img/p13.webp" alt="Diseño Mundial Del Valle">
+                        <span><i class="fa-solid fa-flag"></i>Busca tu Foto en nuestras redes sociales</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- PROXIMO PARTIDO -->
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-calendar-check"></i> Próximo Partido</div>
+                <p style="font-size:16px; font-weight:700;">Lunes 20 de julio · 7:00 PM</p>
+                <div style="background: var(--bg-body); padding:14px 16px; border-radius:12px; margin-top:10px; align-items:center; gap:12px; border-left:4px solid var(--amarillo-dorado);">
+                    
+                     <span><i class="fa-solid fa-users"></i> NOTHINGHAM MIEDO VS LOS DE LA CINCO</span>
+                     <br>
+                    <span><i class="fa-solid fa-users"></i> VENCEDORES FC VS LITIGANTES FC</span>                    
+                    <br>
+                    <span><i class="fa-solid fa-flag"></i> Estar 30 mit para la foto del equipo </span>
+                    <br>
+                    <i class="fa-solid fa-location-dot" style="color:var(--amarillo-dorado);font-size:20px;"></i><span><strong>  Cancha San Martin</strong><br></span>
+                </div>
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--verde-claro);">
+                    <img style="max-width: 100%; height: auto; display: block;" src="img/partido2.webp" alt="Proximo Partido">
+                </div>
+            </div>
+
+            <!-- PREMIOS -->
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-award"></i> Premios</div>
+                <div class="premios-grid">
+                    <div class="premio-item destacado">
+                        <div class="premio-icon">🥇</div>
+                        <div class="premio-monto">$1.000.000</div>
+                        <div class="premio-label">Primer Lugar</div>
+                    </div>
+                    <div class="premio-item">
+                        <div class="premio-icon">🥈</div>
+                        <div class="premio-monto">$500.000</div>
+                        <div class="premio-label">Segundo Lugar</div>
+                    </div>
+                    <div class="premio-item">
+                        <div class="premio-icon">🧤</div>
+                        <div class="premio-monto">$250.000</div>
+                        <div class="premio-label">Menos Vencida</div>
+                    </div>
+                    <div class="premio-item">
+                        <div class="premio-icon">⚽</div>
+                        <div class="premio-monto">$250.000</div>
+                        <div class="premio-label">Goleador</div>
+                    </div>
+                </div>
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--verde-claro);">
+                    <p style="font-size:14px; color:var(--text-secondary);">
+                        <i class="fa-solid fa-info-circle" style="color:var(--verde-claro);"></i> 
+                        <strong>Sin costo de inscripción</strong> 
+                        <br>
+                        <br>
+                        • Solo se paga arbitraje, tendra un valor de $20.000 x equipo.
+                        <br>
+                        <br>
+                        • El capitán o entrenador recibirá la información de su partido.
+                    </p>
+                </div>
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--verde-claro);">
+                    <img style="max-width: 100%; height: auto; display: block;" src="img/premios.png" alt="Premios">
+                </div>
+            </div>
+
+            <!-- REDES SOCIALES -->
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-bullhorn"></i> Síguenos</div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a href="#" class="btn" style="flex:1; background:#000; font-size:15px;"><i class="fa-brands fa-tiktok"></i> TikTok</a>                    
+                    <a href="https://www.facebook.com/share/14fwgxnnUjh/" class="btn" style="flex:1; background:#1877F2; font-size:15px;"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                    <a href="https://www.instagram.com/jorgepana.r?igsh=MWpsbnBibHZ0Z3Npcw==" class="btn" style="flex:1; background:#e1306c; font-size:15px;"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="#" class="btn" style="flex:1; background:#000; font-size:15px;"><i class="fa-brands fa-x"></i> X</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA EQUIPOS
+        ========================================================== -->
+        <div id="view-equipos" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-shield-halved"></i> Equipos (16)</div>
+                <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
+                    Toca cualquier equipo para ver su plantilla.
+                </p>
+                <div class="equipos-grid" id="equipos-container"></div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA POSICIONES (TODOS EN 0)
+        ========================================================== -->
+        <div id="view-posiciones" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-table"></i> Tabla de Posiciones</div>
+                <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">
+                    Clasifican los 2 primeros de cada grupo.
+                </p>
+                <div id="tabla-posiciones-container"></div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA FECHAS (DISEÑO EN FILA MEJORADO)
+        ========================================================== -->
+        <div id="view-fechas" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-calendar-days"></i> Calendario de Partidos</div>
+                <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
+                    Todos los partidos programados con sus resultados.
+                    <br>
+                    Las fechas estan sujetas a cambio por parte del comite organizador.
+                </p>
+                <div id="fechas-container"></div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA GOLEADORES
+        ========================================================== -->
+        <div id="view-goleadores" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-futbol"></i> Tabla de Goleadores</div>
+                <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
+                    Los goleadores del torneo.
+                </p>
+                <div id="goleadores-container"></div>
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--amarillo-dorado);">
+                    <p style="font-size:13px; color:var(--text-secondary);">
+                        <i class="fa-solid fa-trophy" style="color:var(--amarillo-dorado);"></i>
+                        <strong>Premio al Goleador:</strong> $250.000
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA INSCRIPCIÓN
+        ========================================================== -->
+        <div id="view-inscripcion" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-file-signature"></i> Inscripción</div>
+                <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">Completa el formulario para postular tu equipo.</p>
+                <div style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.1); text-align:center;">
+                    <p style="font-size:13px; color:var(--text-secondary); margin-bottom:10px;">Inscríbete llenando el formulario en Google Forms</p>
+                    <a href="https://forms.gle/ZM5iTz3MYVL39Ncn6" target="_blank" class="btn btn-success" style="font-size:15px; background:#1a7a3a;">
+                        <i class="fa-brands fa-google"></i> Abrir Formulario
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA REGLAMENTO
+        ========================================================== -->
+        <div id="view-reglamento" class="app-view">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-scale-balanced"></i> Reglamento</div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Requisito <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body">Cada jugador debe seguir nuestra redes sociales.</div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Sistema de Juego <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body">16 equipos en 4 grupos. Clasifican los 2 mejores a Cuartos de Final. Eliminatorias a partido único.</div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Tiempos y Cambios <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body">2 tiempos de 25 min con 10 de descanso. Cambios rotativos e ilimitados.</div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Puntuación <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body">Victoria 3 pts, Empate 1, Derrota 0. Desempate: enfrentamiento directo, diferencia de goles, goles a favor.</div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Disciplina <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body">2 amarillas = 1 fecha suspensión. Roja directa = mínimo 1 fecha. Tolerancia 15 min o W.O.</div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Inscripción <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="accordion-body"><strong>Gratuita</strong> · Solo se paga arbitraje. Empieza miércoles 2 de julio a las 6:00 PM. El capitán o entrenador recibirá la información del lugar y hora de su partido.</div>
+                </div>
+                
+                <div style="margin-top:14px; padding:12px; background: var(--bg-body); border-radius:12px; border-left:4px solid var(--verde-claro);">
+                    <img style="max-width: 100%; height: auto; display: block;" src="img/reglas.webp" alt="Reglas">
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        VISTA LÍDER
+        ========================================================== -->
+        <div id="view-lider" class="app-view">
+            <div class="card profile-section">
+                <div class="profile-img">
+                    <img src="img/jorge.jpg" alt="Jorge Pana Diputado">
+                </div>
+                <h2>Jorge Pana</h2>
+                <p style="color:var(--amarillo-dorado); font-weight:600; font-size:15px;">Líder Comunitario · Gestor Social</p>
+                <div class="eslogan-perfil">🤝 Nos une</div>
+                <p class="biography">
+                    Con más de 15 años de trabajo por el desarrollo integral de las comunidades de Valledupar y el Departamento del Cesar, Jorge ha impulsado proyectos deportivos, educativos y de inclusión social. 
+                    <br><br>
+                    <strong>"El Mundial Del Valle"</strong> nace de su compromiso con la juventud, creando espacios de sana competencia, integración y esperanza. Cree que el fútbol es un vehículo poderoso para transformar realidades y construir tejido social.
+                </p>
+                <a href="https://wa.me/573232915542?text=Hola%20Jorge,%20quiero%20unirme%20al%20Mundial%20Del%20Valle" 
+                   target="_blank" class="btn" style="background:var(--verde-cancha);">
+                   <i class="fa-solid fa-hands-holding-circle"></i> UNETE
+                </a>
+            </div>
+        </div>
+
+    </div><!-- /app-container -->
+
+    <!-- ============================================================
+    MODAL EQUIPO
+    ============================================================ -->
+    <div class="modal" id="equipo-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-info">
+                <div class="equipo-logo" id="modal-logo" style="width:70px;height:70px;font-size:34px;margin:0 auto 10px;"></div>
+                <h3 id="modal-equipo-nombre" style="font-family:'Oswald',sans-serif;font-size:20px;"></h3>
+                <p id="modal-equipo-grupo" style="font-size:13px;color:var(--text-secondary);"></p>
+            </div>
+            <h4 style="font-family:'Oswald',sans-serif;font-size:16px;margin-bottom:10px;"><i class="fa-solid fa-users"></i> Plantilla</h4>
+            <ul class="player-list" id="modal-player-list"></ul>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    NAVEGACIÓN INFERIOR
+    ============================================================ -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchView('inicio', this)"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
+        <button class="nav-item" onclick="switchView('equipos', this)"><i class="fa-solid fa-shield-halved"></i><span>Equipos</span></button>
+        <button class="nav-item" onclick="switchView('posiciones', this)"><i class="fa-solid fa-table"></i><span>Posiciones</span></button>
+        <button class="nav-item" onclick="switchView('fechas', this)"><i class="fa-solid fa-calendar-days"></i><span>Fechas</span></button>
+        <button class="nav-item" onclick="switchView('goleadores', this)"><i class="fa-solid fa-futbol"></i><span>Goles</span></button>
+        <button class="nav-item" onclick="switchView('inscripcion', this)"><i class="fa-solid fa-file-signature"></i><span>Inscribir</span></button>
+        <button class="nav-item" onclick="switchView('reglamento', this)"><i class="fa-solid fa-scale-balanced"></i><span>Reglas</span></button>
+        <button class="nav-item" onclick="switchView('lider', this)"><i class="fa-solid fa-user"></i><span>Líder</span></button>
+    </nav>
+
+    <!-- ============================================================
+    JAVASCRIPT - TODOS LOS DATOS EN EL CÓDIGO
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // 🟢 DATOS - EDITAR AQUÍ TODOS LOS DATOS DEL MUNDIAL
+        // ============================================================
+
+        /**
+         * EQUIPOS
+         * Cada equipo tiene:
+         *   - nombre: string
+         *   - grupo: 'A', 'B', 'C' o 'D'
+         *   - logo: URL de la imagen (puede ser relativa o absoluta)
+         *   - capitan: string
+         *   - jugadores: array de strings con los nombres
+         */
+        const DATOS_EQUIPOS = [
+            // Grupo A
+            { nombre: 'ESPARTANOS', grupo: 'A', logo: 'img/espartanos.png', capitan: 'TAYLOR BARRERA', jugadores: ['JORGE MARTINEZ', 'EMERSON RESTRESPO', 'CARLOS RANGEL', 'JUAN JIMÉNEZ', 'EMANUEL CORDERO', 'YEISON NORIEGA', 'SAMIR MORENO', 'JUGADOR 9', 'JUGADOR 10', 'JUGADOR 11', 'JUGADOR 12'] },
+            { nombre: 'LOS COCOS FC', grupo: 'A', logo: 'img/loscocos.png', capitan: 'JUAN CAMILO ROSADO', jugadores: ['KEINER PEREZ', 'ROBERTO RESTREPO', 'EDWIN MONTAÑO', 'MOISES NIETO', 'DIEGO PERALTA', 'ALFONSO VALLE', 'JOSE MARTINEZ', 'HUGO PEÑA', 'JAIME ARIAS', 'JOSE GENECCO', 'RAMIRO RAMOS'] },
+            { nombre: 'EQUIPO PANA', grupo: 'A', logo: 'img/pana.png', capitan: 'JORGE ANDRES PANA', jugadores: ['JUGADOR 1', 'JUGADOR 3', 'JUGADOR 4', 'JUGADOR 5', 'JUGADOR 6', 'JUGADOR 7', 'JUGADOR 8', 'JUGADOR 9', 'JUGADOR 10', 'JUGADOR 11', 'JUGADOR 12'] },
+            { nombre: 'CIUDADELA FC', grupo: 'A', logo: 'img/cfc.png', capitan: 'LUIS NAYITH USUGA', jugadores: ['YEISON GARCIA', 'FRAILER CAMARGO', 'JUAN DANIEL AMAYA', 'YEFFREY PEREZ' ,'YEISON COTES', 'IVAN JIMENEZ', 'SANTIAGO GOMEZ', 'RICARDO VILLEGAS', 'SANTIAGO PISCIOTTY', 'DANIEL VALLE OLIVERA', 'PEDRO ORTEGA', 'IVAN FONTALVO'] },
+            // Grupo B
+            { nombre: 'EQUIPO LAS TORRES', grupo: 'B', logo: 'img/lostorres.png', capitan: 'ANDRES GAMEZ', jugadores: ['JUAN YEPEZ', 'CAMILO MEJIA', 'JOSE ORTIZ', 'SEBADTIAN ROJAS', 'AVIS FLOREZ', 'CARLOS REYES', 'MIGUEL JUNIOR', 'LEANDRO PEREZ', 'ANDRES QUIMBAYO', 'JEFERSON VILLAR', 'JHON PEREZ'] },
+            { nombre: 'DOMINIO FC', grupo: 'B', logo: 'img/dominio.png', capitan: 'JOSE GALVIS', jugadores: ['JOIMAR IBARRA', 'ELKIN BACCI', 'FABIAN MARTINEZ', 'JUNIOR SANCHEZ', 'DEIVIS LEMUS', 'SAUL ROJAS', 'GUSTAVO HERRERA', 'DUVAN BACCI', 'JESUS CONRADO', 'JUGADOR 11', 'JUGADOR 12'] },
+            { nombre: 'FRBS FC', grupo: 'B', logo: 'img/frbs.png', capitan: 'JULIO CESAR BOLAÑO', jugadores: ['JOSE TOMAS', 'NOGAR BOLAÑOS', 'FAIDER BASTIDA CASTRILLO', 'NOKEIBER BOLAÑOS', 'JUNIOR TORRES', 'AMETH SANCHEZ', 'MARTIN SANCHEZ', 'MISAEL VERGARA', 'JHONATAN ANDRES CARO LOPEZ', 'LUIS PEREZ', 'CARLOS ACOSTA'] },
+            { nombre: 'ELITE FC', grupo: 'B', logo: 'img/elite.jpg', capitan: 'NICOLAS ROMERO', jugadores: ['NEIFER LUJAN', 'OLGER JIMENEZ', 'JOSE CUESTA', 'LUIS DAZA', 'JOSE TUIRAN', 'RAFAEL CAMACHO', 'DANIEL BRAVO', 'TOMAS JUNIOR', 'DIEGO SOLANO', 'ROBERTO ACOSTA', 'ANDRES GRANADOS'] },
+            // Grupo C
+            { nombre: 'LITIGANTES FC', grupo: 'C', logo: 'img/litigantes.jpg', capitan: 'NICOLAS ROJAS', jugadores: ['MARIO VARELA', 'CARLOS VARELA', 'LUIS AVILA', 'EDUARDO SANCHEZ', 'FABIAN PAREDES', 'SEBASTIAN GONZALEZ', 'MOISES PAREJO', 'BRAYAN ARRIETA', 'VICTOR LOPEZ', 'JUAN PARODI', 'BRAYAN SANTOS'] },
+            { nombre: 'VENCEDORES FC', grupo: 'C', logo: 'img/vencedores.jpg', capitan: 'JAFET VALENCIA CARRILLO', jugadores: ['JOSE MENDEZ', 'ANGEL RIVERA', 'ANDRES CASTRO', 'JAVIER MARULANDA', 'JUAN ALGARIN', 'JESUS CASTILLO', 'MIGUEK SUAREZ', 'YORYI CASTILLO', 'GLEIDER CASTILLO', 'CAMILO PEDRAZA', 'RAFAEL GONZALEZ', 'JHONATAN RUEDA', 'JESUS MOLINA', 'SEBASTIAN ALVAREZ'] },
+            { nombre: 'NOTTINGHAM MIEDO', grupo: 'C', logo: 'img/nottingham.jpg', capitan: 'LUIS EDUARDO BOTERO ', jugadores: ['JUGADOR2', 'JUGADOR 3', 'JUGADOR 4', 'JUGADOR 5', 'JUGADOR 6', 'JUGADOR 7', 'JUGADOR 8', 'JUGADOR 9', 'JUGADOR 10', 'JUGADOR 11', 'JUGADOR 12'] },
+            { nombre: 'LOS DE LA CINCO', grupo: 'C', logo: 'img/losdelcinco.png', capitan: 'VICTOR PEÑA', jugadores: ['GOBER VALENCIA', 'JONATHAN GARCIA', 'MARTIN MENDOZA', 'HUGO ZAMBRANO', 'ENDERSON CARABALLO', 'WILMAN DAVID', 'OSCAR BROCHERO', 'ANGEL MARTINEZ', 'BRAYAN RAMOS', 'JUGADOR 11', 'JUGADOR 12'] },
+            // Grupo D
+            { nombre: 'REAL BRISA FC', grupo: 'D', logo: 'img/brisa.png', capitan: 'ANDRES FELIPE JIMENEZ ', jugadores: ['KEVIN AMARIS', 'JESUS MACEA', 'ALEX SANCHEZ', 'ALEXANDER PADILLA', 'ADRIAN REMOLINA', 'RAFAEL ROJANO', 'OSCAR AVENDAÑO', 'EDGARDO GUTIERREZ', 'JAIDER SANCHEZ', 'JORGE GALEANO', 'EDWIN MORENO', 'CARLOS LAMARCA'] },
+            { nombre: 'SELLO ROJO FC', grupo: 'D', logo: 'img/sellorojo.jpg', capitan: 'JORGE AVENDAÑO GARRIDO', jugadores: ['CARLOS ROJAS', 'JHON ALANNDETTE', 'ESNEIDER AVILA', 'EDGAR CHARRIS', 'YEIVER VERDECIA', 'CARLOS ROJAS MARTINEZ', 'CARLOS RAMIREZ', 'RAY RINCON', 'EFREN AMAYA', 'JUGADOR 11', 'JUGADOR 12'] },
+            { nombre: 'EQUIPO 20 DE JULIO', grupo: 'D', logo: 'img/20julio.jpg', capitan: 'SEBASTIAN HERRERA', jugadores: ['NAREN RODELO', 'JHON OBREGON', 'SEBASTIAN SANCHEZ', 'ANGEL QUINTERO', 'RAFAEL CAMPO', 'JESUS SANCHEZ', 'SERGIO RODELO', 'JOSE MOLINA', 'J0SE GOMEZ', 'ADRIAN DIAZ', 'ENETH GONZALEZ', 'ALDAIR ACOSTA', 'JHONATAN SALCEDO', 'FERNANDO HERNANDEZ'] },
+            { nombre: 'OLIMPO FC', grupo: 'D', logo: 'img/olimpo.png', capitan: 'ANDRES DANILO RICARDO PUMAREJO', jugadores: ['JUGADOR 2', 'JUGADOR 3', 'JUGADOR 4', 'JUGADOR 5', 'JUGADOR 6', 'JUGADOR 7', 'JUGADOR 8', 'JUGADOR 9', 'JUGADOR 10', 'JUGADOR 11', 'JUGADOR 12'] }
+        ];
+
+        /**
+         * 🟢 RESULTADOS DE PARTIDOS (MARCADORES)
+         * Cada objeto tiene:
+         *   - local: nombre del equipo local (debe coincidir con DATOS_EQUIPOS)
+         *   - visitante: nombre del equipo visitante
+         *   - golLocal: número de goles del local
+         *   - golVisitante: número de goles del visitante
+         * 
+         * Para que la tabla de posiciones arranque en 0, 
+         * simplemente deja este array vacío o con los partidos que ya tengan resultado.
+         */
+        const DATOS_RESULTADOS = [
+            { local: 'EQUIPO LAS TORRES', visitante: 'FRBS FC', golLocal: 2, golVisitante: 6 },
+            { local: 'ESPARTANOS', visitante: 'LOS COCOS FC', golLocal: 4, golVisitante: 2 },
+            { local: 'LITIGANTES FC', visitante: 'NOTTINGHAM MIEDO', golLocal: 3, golVisitante: 3 },
+            { local: 'REAL BRISA FC', visitante: 'SELLO ROJO FC', golLocal: 5, golVisitante: 5 },
+            { local: 'DOMINIO FC', visitante: 'ELITE FC', golLocal: 0, golVisitante: 5 },
+            { local: 'EQUIPO PANA', visitante: 'CIUDADELA FC', golLocal: 10, golVisitante: 2 },
+            { local: 'LOS DE LA CINCO', visitante: 'VENCEDORES FC', golLocal: 2, golVisitante: 5 },
+            { local: 'EQUIPO 20 DE JULIO', visitante: 'OLIMPO FC', golLocal: 7, golVisitante: 5 },
+            { local: 'FRBS FC', visitante: 'DOMINIO FC', golLocal: 7, golVisitante: 2 },
+            { local: 'ESPARTANOS', visitante: 'EQUIPO PANA', golLocal: 5, golVisitante: 3 },
+            // Agrega aquí los resultados de los partidos jugados
+            // { local: 'ESPARTANOS', visitante: 'LOS COCOS FC', golLocal: 4, golVisitante: 2 },
+            // { local: 'EQUIPO LAS TORRES', visitante: 'FRBS FC', golLocal: 2, golVisitante: 1 },
+        ];
+
+        /**
+         * 🟢 GOLEADORES
+         * Cada objeto tiene:
+         *   - equipo: nombre del equipo
+         *   - nombre: nombre del jugador
+         *   - goles: cantidad de goles
+         */
+        const DATOS_GOLEADORES = [
+            { equipo: 'FRBS FC', nombre: 'NOGAR BOLAÑOS', goles: 8 },
+            { equipo: 'EQUIPO PANA', nombre: 'UBER PERALTA', goles: 4 },
+
+            { equipo: 'ELITE FC', nombre: 'ANDRES GRANADO', goles: 3 },
+            { equipo: 'EQUIPO PANA', nombre: 'JOHAN VILLAZON', goles: 3 },
+            { equipo: 'ESPARTANOS', nombre: 'JOSE POLO', goles: 3 },
+           
+
+            { equipo: 'ESPARTANOS', nombre: 'CARLOS RANGEL', goles: 2 },
+            { equipo: 'REAL BRISA FC', nombre: 'CARLOS LAMARCA', goles: 2 },
+            { equipo: 'SELLO ROJO FC', nombre: 'CARLOS ROJAS', goles: 2 },
+            { equipo: 'SELLO ROJO FC', nombre: 'CARLOS RAMIREZ', goles: 2 },
+            { equipo: 'ELITE FC', nombre: 'DIEGO SOLANO', goles: 2 },
+            { equipo: 'EQUIPO PANA', nombre: 'YOSIMAR VILLAZON', goles: 2 },
+            { equipo: 'EQUIPO PANA', nombre: 'EFREN ROSADO', goles: 2 },
+            { equipo: 'EQUIPO 20 DE JULIO', nombre: 'JOSE GABRIEL', goles: 2 },
+            { equipo: 'EQUIPO 20 DE JULIO', nombre: 'ANGEL QUINTERO', goles: 2 },   
+            { equipo: 'OLIMPO FC', nombre: 'HECTOR', goles: 2 },   
+            { equipo: 'DOMINIO FC', nombre: 'JULIAN HERRERA', goles: 2 },   
+            { equipo: 'FRBS FC', nombre: 'CARLOS ACOSTA', goles: 2 },
+    
+
+            { equipo: 'ESPARTANOS', nombre: 'DAVID', goles: 1 },
+            { equipo: 'LOS COCOS FC', nombre: 'HUGO PEÑA', goles: 1 },
+            { equipo: 'LOS COCOS FC', nombre: 'ROBERTO RESTREPO', goles: 1 },            
+            { equipo: 'FBRS FC', nombre: 'FAIDER BASTILLA', goles: 1 },
+            { equipo: 'FBRS FC', nombre: 'JUNIOR COTES', goles: 1 },
+            { equipo: 'EQUIPO LAS TORRES', nombre: 'SEBASTIAN ROJAS', goles: 1 },
+            { equipo: 'EQUIPO LAS TORRES', nombre: 'JUAN YEPES', goles: 1 },
+            { equipo: 'NOTTINGHAM MIEDO', nombre: 'ARMANDO COTES', goles: 1 },
+            { equipo: 'NOTTINGHAM MIEDO', nombre: 'YEISON VERGARA', goles: 1 },
+            { equipo: 'NOTTINGHAM MIEDO', nombre: 'CARLOS ANDRES', goles: 1 },
+            { equipo: 'LITIGANTES FC', nombre: 'MOISES PAREJO', goles: 1 },
+            { equipo: 'LITIGANTES FC', nombre: 'FABIAN PAREDES', goles: 1 },
+            { equipo: 'LITIGANTES FC', nombre: 'VICTOR LOPEZ', goles: 1 },
+            { equipo: 'REAL BRISA FC', nombre: 'EDWIN MORENO', goles: 1 },
+            { equipo: 'REAL BRISA FC', nombre: 'MIGUEL RUIZ', goles: 1 },
+            { equipo: 'REAL BRISA FC', nombre: 'SANTIAAGO SANCHEZ', goles: 1 },
+            { equipo: 'SELLO ROJO FC', nombre: 'EFREN AMAYA', goles: 1 },
+            { equipo: 'EQUIPO PANA', nombre: 'MILTON LOZADA', goles: 1 },
+            { equipo: 'CIUDADELA FC', nombre: 'FRAILER CAMARGO', goles: 1 },
+            { equipo: 'CIUDADELA FC', nombre: 'DANIEL ZAPATA', goles: 1 },
+            { equipo: 'VENCEDORES FC', nombre: 'YORYIS CASTILLO', goles: 1 },
+            { equipo: 'VENCEDORES FC', nombre: 'JAVIER MARULANDA', goles: 1 },
+            { equipo: 'VENCEDORES FC', nombre: 'JAFET VALENCIA', goles: 1 },
+            { equipo: 'VENCEDORES FC', nombre: 'RAFAEL GONZALEZ', goles: 1 },
+            { equipo: 'VENCEDORES FC', nombre: 'GLEIDER CASTILLO', goles: 1 },
+            { equipo: 'LOS DE LA CINCO', nombre: 'OSCAR BROCHERO', goles: 1 },
+            { equipo: 'LOS DE LA CINCO', nombre: 'JUNIOR', goles: 1 },
+            { equipo: 'EQUIPO 20 DE JULIO', nombre: 'JOSE MOLINA', goles: 1 },   
+            { equipo: 'EQUIPO 20 DE JULIO', nombre: 'ENETH GONZALEZ', goles: 1 },   
+            { equipo: 'EQUIPO 20 DE JULIO', nombre: 'NAREN RODELO', goles: 1 },   
+            { equipo: 'OLIMPO FC', nombre: 'JOSE', goles: 1 },
+            { equipo: 'OLIMPO FC', nombre: 'SEVALLOS', goles: 1 },
+            { equipo: 'OLIMPO FC', nombre: 'RAFAEL', goles: 1 },
+            { equipo: 'FRBS FC', nombre: 'JUNIOR BOLAÑOS', goles: 1 },
+            { equipo: 'EQUIPO PANA', nombre: 'YAN FERNANDEZ', goles: 1 },
+            { equipo: 'EQUIPO PANA', nombre: 'JHON VILLERO', goles: 1 },
+            { equipo: 'ESPARTANOS', nombre: 'MANUEL CORDERO', goles: 1 },
+            { equipo: 'EQUIPO PANA', nombre: 'AUTOGOL - ARQUERO', goles: 1 },
+
+            { equipo: '', nombre: '', goles: 0 },
+            { equipo: '', nombre: '', goles: 0 },
+            
+            // Agrega aquí los goleadores
+            // { equipo: 'ESPARTANOS', nombre: 'Taylor Barrera', goles: 3 },
+            // { equipo: 'LOS COCOS FC', nombre: 'Juan Camilo Rosado', goles: 2 },
+        ];
+
+        /**
+         * 🟢 FECHAS (Partidos programados)
+         * Cada fecha tiene:
+         *   - local: nombre del equipo local
+         *   - visitante: nombre del equipo visitante
+         *   - fecha: string con la fecha
+         *   - hora: string con la hora
+         *   - lugar: string con el lugar
+         */
+        const DATOS_FECHAS = [
+            { local: 'EQUIPO LAS TORRES', visitante: 'FRBS FC', fecha: 'Miercoles 1 de julio', hora: '6:30 PM', lugar: 'Cancha Villa Castro' },
+            { local: 'ESPARTANOS', visitante: 'LOS COCOS FC', fecha: 'Miercoles 1 de julio', hora: '7:30 PM', lugar: 'Cancha Villa Castro' },
+            { local: 'REAL BRISA FC', visitante: 'SELLO ROJO FC', fecha: 'Lunes 6 de julio', hora: '7:00 PM', lugar: 'Cancha San Martin' },
+            { local: 'LITIGANTES FC', visitante: 'NOTTINGHAM MIEDO', fecha: 'Lunes 6 de julio', hora: '8:00 PM', lugar: 'Cancha San Martin' },
+            { local: 'DOMINIO FC', visitante: 'ELITE FC', fecha: 'Miercoles 8 de julio', hora: '7:00 PM', lugar: 'Cancha Por Confirmar' },
+            { local: 'EQUIPO PANA', visitante: 'CIUDADELA FC', fecha: 'Miercoles 8 de julio', hora: '8:00 PM', lugar: 'Cancha Por Confirmar' },
+            { local: 'LOS DE LA CINCO', visitante: 'VENCEDORES FC', fecha: 'Lunes 13 de julio', hora: '7:00 PM', lugar: 'Cancha Por Confirmar' },
+            { local: 'EQUIPO 20 DE JULIO', visitante: 'OLIMPO FC', fecha: 'Lunes 13 de julio', hora: '8:00 PM', lugar: 'Cancha Por Confirmar' },
+            { local: 'FRBS FC', visitante: 'DOMINIO FC', fecha: 'Miercoles 15 de julio', hora: '7:00 PM', lugar: 'Cancha Villa Castro' },
+            { local: 'ESPARTANOS', visitante: 'EQUIPO PANA', fecha: 'Miercoles 15 de julio', hora: '8:00 PM', lugar: 'Cancha Villa Castro' },
+           
+            { local: 'LOS COCOS FC', visitante: 'CIUDADELA FC', fecha: 'Viernes 17 de julio', hora: '7:00 PM', lugar: 'Cancha por La Gota Fria' },
+            { local: 'EQUIPO LAS TORRES', visitante: 'ELITE FC', fecha: 'Viernes 17 de julio', hora: '8:00 PM', lugar: 'Cancha Por La Gota Fria' },
+           
+            { local: 'NOTTINGHAM MIEDO', visitante: 'LOS DE LA CINCO', fecha: 'Lunes 20 de julio', hora: '7:00 PM', lugar: 'Cancha San Martin' },
+            { local: 'VENCEDORES FC', visitante: 'LITIGANTES FC', fecha: 'Lunes 20 de julio', hora: '8:00 PM', lugar: 'Cancha San Martin' },
+            
+            { local: 'REAL BRISA FC', visitante: 'OLIMPO FC', fecha: 'Martes 21 de julio', hora: '7:00 PM', lugar: 'Cancha Villa Castro' },
+            { local: 'SELLO ROJO FC', visitante: 'EQUIPO 20 DE JULIO', fecha: 'Martes 21 de julio', hora: '8:00 PM', lugar: 'Cancha Villa Castro' },
+            
+            { local: 'EQUIPO PANA', visitante: 'LOS COCOS FC', fecha: 'Miercoles 22 de julio', hora: '7:00 PM', lugar: 'Cancha Villa Castro' },
+            { local: 'ESPARTANOS', visitante: 'CIUDADELA FC', fecha: 'Miercoles 22 de julio', hora: '8:00 PM', lugar: 'Cancha Villa Castro' },
+           
+            { local: 'EQUIPO LAS TORRES', visitante: 'DOMINIO FC', fecha: 'Jueves 23 de julio', hora: '7:00 PM', lugar: 'Cancha San Martin' },
+            { local: 'FRBS FC', visitante: 'ELITE FC', fecha: 'Jueves 23 de julio', hora: '8:00 PM', lugar: 'Cancha San Martin' },
+           
+            { local: 'LITIGANTES FC', visitante: 'LOS DE LA CINCO', fecha: 'Viernes 24 de julio', hora: '7:00 PM', lugar: 'Cancha Los Cortijos' },
+            { local: 'NOTTINGHAM MIEDO', visitante: 'VENCEDORES FC', fecha: 'Viernes 24 de julio', hora: '8:00 PM', lugar: 'Cancha Los Cortijos' },
+           
+            { local: 'EQUIPO 20 DE JULIO', visitante: 'REAL BRISA FC', fecha: 'Lunes 27 de julio', hora: '7:00 PM', lugar: 'Cancha La Victoria' },
+            { local: 'SELLO ROJO FC', visitante: 'OLIMPO FC', fecha: 'Lunes 27 de julio', hora: '8:00 PM', lugar: 'Cancha La Victoria' }
+        ];
+
+        /**
+         * 🟢 POSICIONES INICIALES (TODOS EN 0)
+         * No es necesario editar esto, se calcula automáticamente desde DATOS_RESULTADOS
+         * Los equipos se inicializan en 0 automáticamente.
+         */
+        function generarPosicionesIniciales() {
+            const grupos = ['A', 'B', 'C', 'D'];
+            const posiciones = {};
+            grupos.forEach(g => {
+                posiciones[g] = DATOS_EQUIPOS
+                    .filter(eq => eq.grupo === g)
+                    .map(eq => ({
+                        nombre: eq.nombre,
+                        pj: 0,
+                        pg: 0,
+                        pe: 0,
+                        pp: 0,
+                        gf: 0,
+                        gc: 0,
+                        pts: 0
+                    }));
+            });
+            return posiciones;
+        }
+
+        // ============================================================
+        // 🟢 FIN DATOS - NO EDITAR POR DEBAJO DE ESTA LÍNEA
+        // ============================================================
+
+        // ============================================================
+        // FUNCIONES DE PROCESAMIENTO
+        // ============================================================
+
+        // Construir equiposData a partir de DATOS_EQUIPOS
+        let equiposData = DATOS_EQUIPOS.map((eq, idx) => ({
+            id: idx + 1,
+            nombre: eq.nombre,
+            grupo: 'Grupo ' + eq.grupo,
+            logo: eq.logo,
+            capitan: eq.capitan,
+            jugadores: eq.jugadores
+        }));
+
+        // Calcular posiciones desde los resultados
+        function calcularPosiciones() {
+            // Generar posiciones iniciales con todos en 0
+            let posiciones = generarPosicionesIniciales();
+            
+            // Procesar cada resultado
+            DATOS_RESULTADOS.forEach(r => {
+                // Encontrar en qué grupo está cada equipo
+                let grupoLocal = null;
+                let grupoVisitante = null;
+                
+                for (const [grupo, equipos] of Object.entries(posiciones)) {
+                    if (equipos.some(e => e.nombre === r.local)) {
+                        grupoLocal = grupo;
+                    }
+                    if (equipos.some(e => e.nombre === r.visitante)) {
+                        grupoVisitante = grupo;
+                    }
+                }
+                
+                if (grupoLocal && grupoVisitante && grupoLocal === grupoVisitante) {
+                    const grupo = grupoLocal;
+                    const localIdx = posiciones[grupo].findIndex(e => e.nombre === r.local);
+                    const visitIdx = posiciones[grupo].findIndex(e => e.nombre === r.visitante);
+                    
+                    if (localIdx !== -1 && visitIdx !== -1) {
+                        const local = posiciones[grupo][localIdx];
+                        const visit = posiciones[grupo][visitIdx];
+                        
+                        local.pj += 1;
+                        visit.pj += 1;
+                        local.gf += r.golLocal;
+                        local.gc += r.golVisitante;
+                        visit.gf += r.golVisitante;
+                        visit.gc += r.golLocal;
+                        
+                        if (r.golLocal > r.golVisitante) {
+                            local.pg += 1;
+                            visit.pp += 1;
+                        } else if (r.golLocal < r.golVisitante) {
+                            visit.pg += 1;
+                            local.pp += 1;
+                        } else {
+                            local.pe += 1;
+                            visit.pe += 1;
+                        }
+                        
+                        local.pts = local.pg * 3 + local.pe * 1;
+                        visit.pts = visit.pg * 3 + visit.pe * 1;
+                    }
+                }
+            });
+            
+            return posiciones;
+        }
+
+        // Función para obtener el resultado de un partido
+        function getResultado(local, visitante) {
+            const encontrado = DATOS_RESULTADOS.find(r => 
+                r.local === local && r.visitante === visitante
+            );
+            if (encontrado) {
+                return { golLocal: encontrado.golLocal, golVisitante: encontrado.golVisitante };
+            }
+            return null;
+        }
+
+        // ============================================================
+        // FUNCIONES DE RENDERIZADO
+        // ============================================================
+
+        function renderEquipos() {
+            const container = document.getElementById('equipos-container');
+            container.innerHTML = '';
+            equiposData.forEach(eq => {
+                const card = document.createElement('div');
+                card.className = 'equipo-card';
+                const logoHTML = eq.logo ? `<img src="${eq.logo}" alt="${eq.nombre}">` : '⚽';
+                card.innerHTML = `
+                    <div class="equipo-logo">${logoHTML}</div>
+                    <div class="equipo-nombre">${eq.nombre}</div>
+                    <div class="equipo-grupo">${eq.grupo}</div>
+                `;
+                card.onclick = () => verPlantilla(eq);
+                container.appendChild(card);
+            });
+        }
+
+        function verPlantilla(equipo) {
+            const logoHTML = equipo.logo ? `<img src="${equipo.logo}" alt="${equipo.nombre}">` : '⚽';
+            document.getElementById('modal-logo').innerHTML = logoHTML;
+            document.getElementById('modal-equipo-nombre').innerText = equipo.nombre;
+            document.getElementById('modal-equipo-grupo').innerText = equipo.grupo;
+            
+            const list = document.getElementById('modal-player-list');
+            list.innerHTML = `<li class="player-item captain"><span>${equipo.capitan}</span><strong>Capitán</strong></li>`;
+            equipo.jugadores.forEach(j => {
+                list.innerHTML += `<li class="player-item"><span>${j}</span></li>`;
+            });
+            document.getElementById('equipo-modal').classList.add('active');
+        }
+
+        function renderTablaPosiciones() {
+            const container = document.getElementById('tabla-posiciones-container');
+            const posiciones = calcularPosiciones();
+            let html = '';
+
+            for (const [grupo, equipos] of Object.entries(posiciones)) {
+                // Ordenar por puntos, luego diferencia de goles, luego goles a favor
+                const sorted = [...equipos].sort((a, b) => {
+                    if (b.pts !== a.pts) return b.pts - a.pts;
+                    if ((b.gf - b.gc) !== (a.gf - a.gc)) return (b.gf - b.gc) - (a.gf - a.gc);
+                    return b.gf - a.gf;
+                });
+
+                html += `<table class="tabla-posiciones">`;
+                html += `<thead><tr><th colspan="9" class="grupo-header">Grupo ${grupo}</th></tr>`;
+                html += `<tr><th>#</th><th>Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>PTS</th></tr></thead><tbody>`;
+                
+                sorted.forEach((eq, idx) => {
+                    const clasePos = idx === 0 ? 'pos-1' : idx === 1 ? 'pos-2' : idx === 2 ? 'pos-3' : '';
+                    html += `<tr class="${clasePos}">
+                        <td>${idx + 1}</td>
+                        <td class="equipo-nom">${eq.nombre}</td>
+                        <td>${eq.pj}</td>
+                        <td>${eq.pg}</td>
+                        <td>${eq.pe}</td>
+                        <td>${eq.pp}</td>
+                        <td>${eq.gf}</td>
+                        <td>${eq.gc}</td>
+                        <td><strong>${eq.pts}</strong></td>
+                    </tr>`;
+                });
+                html += `</tbody></table><br>`;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderFechas() {
+            const container = document.getElementById('fechas-container');
+            if (!container) return;
+            
+            if (DATOS_FECHAS.length === 0) {
+                container.innerHTML = `<p style="text-align:center;color:var(--text-secondary);padding:20px;">
+                    <i class="fa-solid fa-calendar-plus" style="font-size:24px;display:block;margin-bottom:8px;"></i>
+                    No hay partidos programados.
+                </p>`;
+                return;
+            }
+            
+            let html = '';
+            DATOS_FECHAS.forEach((f, idx) => {
+                const localEq = equiposData.find(e => e.nombre === f.local);
+                const visitEq = equiposData.find(e => e.nombre === f.visitante);
+                const localLogo = localEq ? localEq.logo : null;
+                const visitLogo = visitEq ? visitEq.logo : null;
+                const localLogoHTML = localLogo ? `<img src="${localLogo}" alt="${f.local}">` : '⚽';
+                const visitLogoHTML = visitLogo ? `<img src="${visitLogo}" alt="${f.visitante}">` : '⚽';
+                
+                const resultado = getResultado(f.local, f.visitante);
+                const tieneResultado = resultado !== null;
+                
+                // Construir marcador
+                let marcadorHTML = '';
+                if (tieneResultado) {
+                    marcadorHTML = `
+                        <span class="gol-local">${resultado.golLocal}</span>
+                        <span class="separador">-</span>
+                        <span class="gol-visitante">${resultado.golVisitante}</span>
+                    `;
+                } else {
+                    marcadorHTML = `
+                        <span class="sin-resultado">-</span>
+                    `;
+                }
+                
+                const estadoHTML = tieneResultado 
+                    ? `<span class="fecha-estado finalizado"><i class="fa-solid fa-check"></i> Finalizado</span>`
+                    : `<span class="fecha-estado pendiente"><i class="fa-regular fa-clock"></i> Pendiente</span>`;
+                
+                html += `
+                    <div class="fecha-card" id="fecha-${idx}">
+                        <div class="fecha-contenido">
+                            <!-- Equipos en fila -->
+                            <div class="fecha-equipos-row">
+                                <!-- Local -->
+                                <div class="fecha-equipo-col">
+                                    <div class="logo-small">${localLogoHTML}</div>
+                                    <div class="nombre-equipo">${f.local}</div>
+                                </div>
+                                
+                                <!-- VS -->
+                                <div class="fecha-vs">VS</div>
+                                
+                                <!-- Visitante -->
+                                <div class="fecha-equipo-col">
+                                    <div class="logo-small">${visitLogoHTML}</div>
+                                    <div class="nombre-equipo">${f.visitante}</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Marcador debajo de los nombres -->
+                            <div class="fecha-marcador-row">
+                                ${marcadorHTML}
+                            </div>
+                            
+                            <!-- Estado -->
+                            ${estadoHTML}
+                            
+                            <!-- Información del partido -->
+                            <div class="fecha-info-partido">
+                                <strong><i class="fa-regular fa-calendar"></i> ${f.fecha} - ${f.hora}</strong>
+                                <span class="lugar-text"><i class="fa-solid fa-location-dot"></i> ${f.lugar}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderGoleadores() {
+            const container = document.getElementById('goleadores-container');
+            if (!container) return;
+            
+            // Ordenar goleadores por cantidad de goles (descendente)
+            const sorted = [...DATOS_GOLEADORES].sort((a, b) => b.goles - a.goles);
+            
+            let html = `
+                <table class="goleadores-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Equipo</th>
+                            <th>Jugador</th>
+                            <th>Goles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            if (sorted.length === 0) {
+                html += `
+                    <tr>
+                        <td colspan="4" style="text-align:center;padding:20px;color:var(--text-secondary);">
+                            <i class="fa-solid fa-futbol" style="font-size:20px;display:block;margin-bottom:8px;"></i>
+                            No hay goleadores registrados aún.
+                        </td>
+                    </tr>
+                `;
+            } else {
+                sorted.forEach((g, idx) => {
+                    const topClass = idx === 0 ? 'top-scorer' : '';
+                    html += `
+                        <tr class="${topClass}">
+                            <td class="goleador-pos">${idx + 1}</td>
+                            <td><strong>${g.equipo}</strong></td>
+                            <td>${g.nombre}</td>
+                            <td><strong>${g.goles}</strong></td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            html += `
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // CONTROL DE VISTAS
+        // ============================================================
+        function switchView(viewId, element) {
+            document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('view-' + viewId).classList.add('active');
+            element.classList.add('active');
+            window.scrollTo(0, 0);
+            
+            if (viewId === 'posiciones') renderTablaPosiciones();
+            if (viewId === 'fechas') renderFechas();
+            if (viewId === 'goleadores') renderGoleadores();
+        }
+
+        // ============================================================
+        // MODAL
+        // ============================================================
+        function closeModal() {
+            document.getElementById('equipo-modal').classList.remove('active');
+        }
+
+        document.getElementById('equipo-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ============================================================
+        // TEMA OSCURO/CLARO
+        // ============================================================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const btn = document.getElementById('theme-btn');
+            if (current === 'dark') {
+                html.removeAttribute('data-theme');
+                btn.innerHTML = '<i class="fa-solid fa-moon"></i> <span style="font-size:12px;">Tema</span>';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '<i class="fa-solid fa-sun"></i> <span style="font-size:12px;">Tema</span>';
+            }
+        }
+               // ============================================================
+        // ACORDEÓN
+        // ============================================================
+        function toggleAccordion(element) {
+            const body = element.nextElementSibling;
+            const isVisible = body.style.display === 'block';
+            document.querySelectorAll('.accordion-body').forEach(b => b.style.display = 'none');
+            body.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // ============================================================
+        // INICIO
+        // ============================================================
+        window.onload = function() {
+            renderEquipos();
+            renderTablaPosiciones();
+            renderFechas();
+            renderGoleadores();
+        };
+    </script>
+
+</body>
+</html>
